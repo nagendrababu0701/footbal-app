@@ -132,10 +132,10 @@ jQuery('#save_team').click(function(){
     var qty1 = $('#scoring').find('td#passing_touch_downs_'+value).text();
     var price1 = parseFloat(jQuery('#passing_touch_down_user').val());
     $('#scoring').find('td.passing_touch_downs_'+value).text((qty1 / price1 ? qty1 / price1 : 0).toFixed(2))
-    var qty2 = $('#scoring').find('td#passing_interception'+value).text();
+    var qty2 = $('#scoring').find('td#passing_interception_'+value).text();
     var price2 = parseFloat(jQuery('#interception_user').val());
     $('#scoring').find('td.passing_interception_'+value).text((qty2 * price2 ? qty2 * price2 : 0).toFixed(2))
-    var qty3 = $('#scoring').find('td#rushing_yard_user'+value).text();
+    var qty3 = $('#scoring').find('td#rushing_yard_'+value).text();
     var price3 = parseFloat(jQuery('#rushing_yard_user').val());
     $('#scoring').find('td.rushing_yard_'+value).text((qty3 / price3 ? qty3 / price3 : 0).toFixed(2))
     var qty4 = $('#scoring').find('td#rushing_touchdowns_'+value).text();
