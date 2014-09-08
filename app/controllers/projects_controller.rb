@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @sports = FileUpload.all
+    @count = @sports.count
   end
 
   # GET /projects/1

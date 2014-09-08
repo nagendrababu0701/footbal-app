@@ -13,6 +13,10 @@
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Interceptions:</label>
+          <input id="passing_touch_down_user" class="form-control" name="interceptions" type="text" placeholder="Interceptions" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Interceptions:</label>
           <input id="interception_user" class="form-control" name="interceptions" type="text" placeholder="Interceptions" />
         </div>
         <div class="form-group">
@@ -39,13 +43,13 @@
           <label for="exampleInputEmail1">Fumbles Lost:</label>
           <input id="fumbles_lost_user" class="form-control" name="fumbles_lost" type="text" placeholder="Reception Touchdowns" />
         </div>
-        <button type="submit" name="commit" id ="save_team" class="btn btn-primary">Save Values</button>
       </div><!-- /.box-body -->
 
+    </form>
       <div class="box-footer">
 
+        <button name="commit" id ="save_team" class="btn btn-primary">Save Values</button>
       </div>
-    </form>
   </div><!-- /.box -->
 
 </div>
@@ -91,15 +95,15 @@
       <td id="receving_yards_<%=cnt%>" class='show_hide'><%= sport.ReceivingYards %></td>
       <td id="receving_touch_downs_<%=cnt%>" class='show_hide'><%= sport.ReceivingTouchdowns %></td>
       <td id="fumbles_lost_<%=cnt%>" class='show_hide'><%= sport.FumblesLost %></td>
-      <td class="passing_yard_<%=cnt%>"> <%=text_field_tag 'passing_yard','',class: 'width35' %></td>
-      <td class="passing_touch_downs_<%=cnt%>"> <%=text_field_tag 'passing_touch_downs','',class: 'width35' %></td>
-      <td class="passing_interception_<%=cnt%>"> <%=text_field_tag 'passing_interception','',class: 'width35' %></td>
-      <td class="rushing_yard_<%=cnt%>"> <%=text_field_tag 'rushing_yard','',class: 'width35' %></td>
-      <td class="rushing_touchdowns_<%=cnt%>"> <%=text_field_tag 'rushing_touchdowns','',class: 'width35' %></td>
-      <td class="receptions_<%=cnt%>"> <%=text_field_tag 'receptions','',class: 'width35' %></td>
-      <td class="receving_yards_<%=cnt%>"> <%=text_field_tag 'receving_yards' ,'',class: 'width35' %></td>
-      <td class="receving_touch_downs_<%=cnt%>"> <%=text_field_tag 'receving_touch_downs' ,'',class: 'width35' %></td>
-      <td class="fumbles_lost_<%=cnt%>"> <%=text_field_tag 'fumbles_lost','',class: 'width35' %></td>
+      <td class="passing_yard_<%=cnt%>"> </td>
+      <td class="passing_touch_downs_<%=cnt%>"> <%#=text_field_tag 'passing_touch_downs','',class: 'width35' %></td>
+      <td class="passing_interception_<%=cnt%>"> <%#=text_field_tag 'passing_interception','',class: 'width35' %></td>
+      <td class="rushing_yard_<%=cnt%>"> <%#=text_field_tag 'rushing_yard','',class: 'width35' %></td>
+      <td class="rushing_touchdowns_<%=cnt%>"> <%#=text_field_tag 'rushing_touchdowns','',class: 'width35' %></td>
+      <td class="receptions_<%=cnt%>"> <%#=text_field_tag 'receptions','',class: 'width35' %></td>
+      <td class="receving_yards_<%=cnt%>"> <%#=text_field_tag 'receving_yards' ,'',class: 'width35' %></td>
+      <td class="receving_touch_downs_<%=cnt%>"> <%#=text_field_tag 'receving_touch_downs' ,'',class: 'width35' %></td>
+      <td class="fumbles_lost_<%=cnt%>"> <%#=text_field_tag 'fumbles_lost','',class: 'width35' %></td>
       <!--<td ><%#= link_to 'Show', service %></td>-->
       <!--<td><%#= link_to 'Edit', edit_service_path(service) %></td>-->
       <!--<td><%#= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
@@ -122,35 +126,34 @@ jQuery('#save_team').click(function(){
    var value = 0;
    for(value=1;value<=arr;value++)
    {
-   jQuery.each( arr, function( i, value ) {
     var qty = $('#scoring').find('td#passing_yard_'+value).text();
     var price = parseFloat(jQuery('#passing_yard_user').val());
-    $('.passing_yard_'+value+' input').val((qty / price ? qty / price : 0).toFixed(2))
+    $('#scoring').find('td.passing_yard_'+value).text((qty / price ? qty / price : 0).toFixed(2))
     var qty1 = $('#scoring').find('td#passing_touch_downs_'+value).text();
     var price1 = parseFloat(jQuery('#passing_touch_down_user').val());
-    $('.passing_touch_downs_'+value+' input').val((qty1 / price1 ? qty1 / price1 : 0).toFixed(2))
+    $('#scoring').find('td.passing_touch_downs_'+value).text((qty1 / price1 ? qty1 / price1 : 0).toFixed(2))
     var qty2 = $('#scoring').find('td#passing_interception'+value).text();
     var price2 = parseFloat(jQuery('#interception_user').val());
-    $('.passing_interception_'+value+' input').val((qty2 / price2 ? qty2 / price2 : 0).toFixed(2))
-    var qty3 = $('#scoring').find('td#rushing_yard'+value).text();
+    $('#scoring').find('td.passing_interception_'+value).text((qty2 * price2 ? qty2 * price2 : 0).toFixed(2))
+    var qty3 = $('#scoring').find('td#rushing_yard_user'+value).text();
     var price3 = parseFloat(jQuery('#rushing_yard_user').val());
-    $('.rushing_yard_'+value+' input').val((qty3 / price3 ? qty3 / price3 : 0).toFixed(2))
+    $('#scoring').find('td.rushing_yard_'+value).text((qty3 / price3 ? qty3 / price3 : 0).toFixed(2))
     var qty4 = $('#scoring').find('td#rushing_touchdowns_'+value).text();
     var price4 = parseFloat(jQuery('#rushing_touchdown_user').val());
-    $('.rushing_touchdowns_'+value+' input').val((qty4 / price4 ? qty4 / price4 : 0).toFixed(2))
+    $('#scoring').find('td.rushing_touchdowns_'+value).text((qty4 / price4 ? qty4 / price4 : 0).toFixed(2))
     var qty5 = $('#scoring').find('td#receptions_'+value).text();
     var price5 = parseFloat(jQuery('#reception_user').val());
-    $('.receptions_'+value+' input').val((qty5 / price5 ? qty5 / price5 : 0).toFixed(2))
+    $('#scoring').find('td.receptions_'+value).text((qty5 * price5 ? qty5 * price5 : 0).toFixed(2))
     var qty6 = $('#scoring').find('td#receving_yards_'+value).text();
     var price6 = parseFloat(jQuery('#reception_yards_user').val());
-    $('.receving_yards_'+value+' input').val((qty6 / price6 ? qty6 / price6 : 0).toFixed(2))
+    $('#scoring').find('td.receving_yards_'+value).text((qty6 / price6 ? qty6 / price6 : 0).toFixed(2))
     var qty7 = $('#scoring').find('td#receving_touch_downs_'+value).text();
     var price7 = parseFloat(jQuery('#reception_touchdown_user').val());
-    $('.receving_touch_downs_'+value+' input').val((qty7 / price7 ? qty7 / price7 : 0).toFixed(2))
+    $('#scoring').find('td.receving_touch_downs_'+value).text((qty7 / price7 ? qty7 / price7 : 0).toFixed(2))
     var qty8 = $('#scoring').find('td#fumbles_lost_'+value).text();
     var price8 = parseFloat(jQuery('#fumbles_lost_user').val());
-    $('.fumbles_lost_'+value+' input').val((qty8 / price8 ? qty8 / price8 : 0).toFixed(2))
-  };
+    $('#scoring').find('td.fumbles_lost_'+value).text((qty8 * price8 ? qty8 * price8 : 0).toFixed(2))
+  }
 })
 // jQuery('#passing_yard_user').on('input',function() {
 //         var arr = [ "1", "2", "3", "4", "5","6","7","8","9","10","11","12","13","14","15","16","17" ];
