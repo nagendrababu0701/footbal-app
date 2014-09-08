@@ -1,0 +1,426 @@
+<div class="col-md-3">
+  <!-- general form elements -->
+  <div class="box box-primary">
+    <div class="box-header">
+      <h3 class="box-title">User input</h3>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    <form role="form">
+      <div class="box-body">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Passing Yards:</label>
+           <input id="passing_yard_user" class="form-control" name="passing_yards" type="text" placeholder="Passing yards" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Interceptions:</label>
+          <input id="interception_user" class="form-control" name="interceptions" type="text" placeholder="Interceptions" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Rushing Yards:</label>
+          <input id="rushing_yard_user" class="form-control" name="rushing_yards" type="text" placeholder="Rushing yards" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Rushing Touchdowns:</label>
+          <input id="rushing_touchdown_user" class="form-control" name="rushing_touchdowns" type="text" placeholder="Rushing Touchdowns" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Receptions:</label>
+          <input id="reception_user" class="form-control" name="receptions" type="text" placeholder="Receptions" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Reception Yards:</label>
+          <input id="reception_yard_user" class="form-control" name="reception_yard_user" type="text" placeholder="Reception Yards" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Reception Touchdowns:</label>
+          <input id="reception_touchdown_user" class="form-control" name="reception_touchdowns" type="text" placeholder="Reception Touchdowns" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Fumbles Lost:</label>
+          <input id="fumbles_lost_user" class="form-control" name="fumbles_lost" type="text" placeholder="Reception Touchdowns" />
+        </div>
+        <button type="submit" name="commit" id ="save_team" class="btn btn-primary">Save Values</button>
+      </div><!-- /.box-body -->
+
+      <div class="box-footer">
+
+      </div>
+    </form>
+  </div><!-- /.box -->
+
+</div>
+<div class="col-xs-9">
+<div class="box">
+<div class="box-header">
+  <h3 class="box-title">Listing Sports</h3>
+</div><!-- /.box-header -->
+<div class="box-body table-responsive">
+<table id="scoring" class="table table-bordered table-hover">
+<thead>
+<tr>
+  <th>Year</th>
+  <th>Team</th>
+  <th>Name</th>
+  <th>Position</th>
+  <th width=""></th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<%cnt =0 %>
+<% @sports.each do |sport| %>
+    <%cnt+=1%>
+    <tr id='row_<%=cnt%>'>
+      <td id="year_<%=cnt%>"><%= sport.Year %></td>
+      <td id="team_<%=cnt%>"><%= sport.Team %></td>
+      <td id="name_<%=cnt%>"><%= sport.Name %></td>
+      <td id="position_<%=cnt%>"><%= sport.Position %></td>
+      <td id="passing_yard_<%=cnt%>" class='show_hide'><%= sport.PassingYards %></td>
+      <td id="passing_touch_downs_<%=cnt%>" class='show_hide'><%= sport.PassingTouchdowns %></td>
+      <td id="passing_interception_<%=cnt%>" class='show_hide'><%= sport.PassingInterceptions %></td>
+      <td id="rushing_yard_<%=cnt%>" class='show_hide'><%= sport.RushingYards %></td>
+      <td id="rushing_touchdowns_<%=cnt%>" class='show_hide'><%= sport.RushingTouchdowns %></td>
+      <td id="receptions_<%=cnt%>" class='show_hide'><%= sport.Receptions %></td>
+      <td id="receving_yards_<%=cnt%>" class='show_hide'><%= sport.ReceivingYards %></td>
+      <td id="receving_touch_downs_<%=cnt%>" class='show_hide'><%= sport.ReceivingTouchdowns %></td>
+      <td id="fumbles_lost_<%=cnt%>" class='show_hide'><%= sport.FumblesLost %></td>
+      <td class="passing_yard_<%=cnt%>"> <%=text_field_tag 'passing_yard','',class: 'width35' %></td>
+      <td class="passing_touch_downs_<%=cnt%>"> <%=text_field_tag 'passing_touch_downs','',class: 'width35' %></td>
+      <td class="passing_interception_<%=cnt%>"> <%=text_field_tag 'passing_interception','',class: 'width35' %></td>
+      <td class="rushing_yard_<%=cnt%>"> <%=text_field_tag 'rushing_yard','',class: 'width35' %></td>
+      <td class="rushing_touchdowns_<%=cnt%>"> <%=text_field_tag 'rushing_touchdowns','',class: 'width35' %></td>
+      <td class="receptions_<%=cnt%>"> <%=text_field_tag 'receptions','',class: 'width35' %></td>
+      <td class="receving_yards_<%=cnt%>"> <%=text_field_tag 'receving_yards' ,'',class: 'width35' %></td>
+      <td class="receving_touch_downs_<%=cnt%>"> <%=text_field_tag 'receving_touch_downs' ,'',class: 'width35' %></td>
+      <td class="fumbles_lost_<%=cnt%>"> <%=text_field_tag 'fumbles_lost','',class: 'width35' %></td>
+      <!--<td ><%#= link_to 'Show', service %></td>-->
+      <!--<td><%#= link_to 'Edit', edit_service_path(service) %></td>-->
+      <!--<td><%#= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+    </tr>
+<% end %>
+</table>
+</div><!-- /.box-body -->
+</div><!-- /.box -->
+
+
+</div>
+
+</div>
+
+
+<script>
+jQuery('.show_hide').hide()
+jQuery('#save_team').click(function(){
+   var arr = '<%=@count%>'
+   var value = 0;
+   for(value=1;value<=arr;value++)
+   {
+   jQuery.each( arr, function( i, value ) {
+    var qty = $('#scoring').find('td#passing_yard_'+value).text();
+    var price = parseFloat(jQuery('#passing_yard_user').val());
+    $('.passing_yard_'+value+' input').val((qty / price ? qty / price : 0).toFixed(2))
+    var qty1 = $('#scoring').find('td#passing_touch_downs_'+value).text();
+    var price1 = parseFloat(jQuery('#passing_touch_down_user').val());
+    $('.passing_touch_downs_'+value+' input').val((qty1 / price1 ? qty1 / price1 : 0).toFixed(2))
+    var qty2 = $('#scoring').find('td#passing_interception'+value).text();
+    var price2 = parseFloat(jQuery('#interception_user').val());
+    $('.passing_interception_'+value+' input').val((qty2 / price2 ? qty2 / price2 : 0).toFixed(2))
+    var qty3 = $('#scoring').find('td#rushing_yard'+value).text();
+    var price3 = parseFloat(jQuery('#rushing_yard_user').val());
+    $('.rushing_yard_'+value+' input').val((qty3 / price3 ? qty3 / price3 : 0).toFixed(2))
+    var qty4 = $('#scoring').find('td#rushing_touchdowns_'+value).text();
+    var price4 = parseFloat(jQuery('#rushing_touchdown_user').val());
+    $('.rushing_touchdowns_'+value+' input').val((qty4 / price4 ? qty4 / price4 : 0).toFixed(2))
+    var qty5 = $('#scoring').find('td#receptions_'+value).text();
+    var price5 = parseFloat(jQuery('#reception_user').val());
+    $('.receptions_'+value+' input').val((qty5 / price5 ? qty5 / price5 : 0).toFixed(2))
+    var qty6 = $('#scoring').find('td#receving_yards_'+value).text();
+    var price6 = parseFloat(jQuery('#reception_yards_user').val());
+    $('.receving_yards_'+value+' input').val((qty6 / price6 ? qty6 / price6 : 0).toFixed(2))
+    var qty7 = $('#scoring').find('td#receving_touch_downs_'+value).text();
+    var price7 = parseFloat(jQuery('#reception_touchdown_user').val());
+    $('.receving_touch_downs_'+value+' input').val((qty7 / price7 ? qty7 / price7 : 0).toFixed(2))
+    var qty8 = $('#scoring').find('td#fumbles_lost_'+value).text();
+    var price8 = parseFloat(jQuery('#fumbles_lost_user').val());
+    $('.fumbles_lost_'+value+' input').val((qty8 / price8 ? qty8 / price8 : 0).toFixed(2))
+  };
+})
+// jQuery('#passing_yard_user').on('input',function() {
+//         var arr = [ "1", "2", "3", "4", "5","6","7","8","9","10","11","12","13","14","15","16","17" ];
+//             jQuery.each( arr, function( i, value ) {
+//             var qty = $('#scoring').find('td#passing_yard_'+value).text();
+//             var price = parseFloat(jQuery('#passing_yard_user').val());
+//             $('.passing_yard_'+value+' input').val((qty / price ? qty / price : 0).toFixed(2))
+//             })
+//     });
+//     jQuery('#passing_touch_down_user').on('input',function() {
+//         var arr = [ "1", "2", "3", "4", "5","6","7","8","9","10","11","12","13","14","15","16","17" ];
+//             jQuery.each( arr, function( i, value ) {
+//             var qty = $('#scoring').find('td#passing_touch_downs_'+value).text();
+//             var price = parseFloat(jQuery('#passing_touch_down_user').val());
+//             $('.passing_touch_downs_'+value+' input').val((qty / price ? qty / price : 0).toFixed(2))
+//             })
+//     });
+//     jQuery('#interception_user').on('input',function() {
+//         var arr = [ "1", "2", "3", "4", "5","6","7","8","9","10","11","12","13","14","15","16","17" ];
+//             jQuery.each( arr, function( i, value ) {
+//             var qty = $('#scoring').find('td#passing_interception'+value).text();
+//             var price = parseFloat(jQuery('#interception_user').val());
+//             $('.passing_interception_'+value+' input').val((qty / price ? qty / price : 0).toFixed(2))
+//             })
+//     });
+//     jQuery('#rushing_yard_user').on('input',function() {
+//         var arr = [ "1", "2", "3", "4", "5","6","7","8","9","10","11","12","13","14","15","16","17" ];
+//             jQuery.each( arr, function( i, value ) {
+//             var qty = $('#scoring').find('td#rushing_yard'+value).text();
+//             var price = parseFloat(jQuery('#rushing_yard_user').val());
+//             $('.rushing_yard_'+value+' input').val((qty / price ? qty / price : 0).toFixed(2))
+//             })
+//     });
+//     jQuery('#rushing_touchdown_user').on('input',function() {
+//         var arr = [ "1", "2", "3", "4", "5","6","7","8","9","10","11","12","13","14","15","16","17" ];
+//             jQuery.each( arr, function( i, value ) {
+//             var qty = $('#scoring').find('td#rushing_touchdowns_'+value).text();
+//             var price = parseFloat(jQuery('#rushing_touchdown_user').val());
+//             $('.rushing_touchdowns_'+value+' input').val((qty / price ? qty / price : 0).toFixed(2))
+//             })
+//     });
+//     jQuery('#reception_user').on('input',function() {
+//         var arr = [ "1", "2", "3", "4", "5","6","7","8","9","10","11","12","13","14","15","16","17" ];
+//             jQuery.each( arr, function( i, value ) {
+//             var qty = $('#scoring').find('td#receptions_'+value).text();
+//             var price = parseFloat(jQuery('#reception_user').val());
+//             $('.receptions_'+value+' input').val((qty / price ? qty / price : 0).toFixed(2))
+//             })
+//     });
+//     jQuery('#reception_yard_user').on('input',function() {
+//         var arr = [ "1", "2", "3", "4", "5","6","7","8","9","10","11","12","13","14","15","16","17" ];
+//             jQuery.each( arr, function( i, value ) {
+//             var qty = $('#scoring').find('td#receving_yards_'+value).text();
+//             var price = parseFloat(jQuery('#reception_yards_user').val());
+//             $('.receving_yards_'+value+' input').val((qty / price ? qty / price : 0).toFixed(2))
+//             })
+//     });
+//     jQuery('#reception_touchdown_user').on('input',function() {
+//         var arr = [ "1", "2", "3", "4", "5","6","7","8","9","10","11","12","13","14","15","16","17" ];
+//             jQuery.each( arr, function( i, value ) {
+//             var qty = $('#scoring').find('td#receving_touch_downs_'+value).text();
+//             var price = parseFloat(jQuery('#reception_touchdown_user').val());
+//             $('.receving_touch_downs_'+value+' input').val((qty / price ? qty / price : 0).toFixed(2))
+//             })
+//     });
+//     jQuery('#fumbles_lost_user').on('input',function() {
+//         var arr = [ "1", "2", "3", "4", "5","6","7","8","9","10","11","12","13","14","15","16","17" ];
+//             jQuery.each( arr, function( i, value ) {
+//             var qty = $('#scoring').find('td#fumbles_lost_'+value).text();
+//             var price = parseFloat(jQuery('#fumbles_lost_user').val());
+//             $('.fumbles_lost_'+value+' input').val((qty / price ? qty / price : 0).toFixed(2))
+//             })
+//     });
+
+//jQuery(document).ready(function() { 
+//     jQuery('select#people').on('change',function(){
+//       jQuery('#players').empty();
+//       jQuery('.show_hide').hide()
+//       jQuery("#people").val()
+//           jQuery.ajax({
+//                 type: "GET",
+//                 data: {team: jQuery("#people").val()},
+//                 url: '/products/show',
+//                     success: function(data) {
+//                       for(var i=0;i<data.length;i++)
+//                       {
+//                             jQuery('#players').append('<input type="radio" name="player" class="player_name" value="'+data[i].id+'">'+' '+data[i].name+' '+data[i].team+' '+data[i].position+'</br>')
+//                       }
+//                     }
+//             });
+//     })
+
+    
+ 
+  
+// })
+// jQuery('.save_team').click(function(){
+//   checked = jQuery('input[name=player]:checked').val()
+//   jQuery.ajax({
+//         type: "GET",
+//         data: {passing_yard: jQuery('#total').val(),passing_touch_downs:jQuery('#total1').val(),interceptions:jQuery('#total2').val(),rushing_yards:jQuery('#total3').val(),rushing_touchdowns:jQuery('#total4').val(),receptions:jQuery('#total5').val(),reception_yards:jQuery('#total6').val(),reception_touchdowns:jQuery('#total7').val(),return_touchdowns:jQuery('#total8').val(),fumbles_lost:jQuery('#total9').val(),checked:checked},
+//             url: '/products/save_values',
+//                success: function(data) {
+//                      console.log(data)
+//                      window.location.href= 'http://guarded-scrubland-2024.herokuapp.com/team_names?team='+data.id
+//                     }
+//             });
+// })
+//     jQuery(document).on('click', '.player_name', function() { 
+//       jQuery("#container").css("display", "block");
+//       checked = jQuery('input[name=player]:checked').val()
+//         jQuery.ajax({
+//         type: "GET",
+//         data: {team: checked},
+//         url: '/products/show',
+//             success: function(data) {
+//               jQuery('#passing_yard_user').val(data.PassingYards)
+//               if(jQuery('#passing_yards_user').val() !=''){
+//                  var qty = parseInt(jQuery('#passing_yard_user').val());
+//                      var price = parseFloat(jQuery('#passing_yards').val());
+//                      jQuery('#total').val((qty / price ? qty / price : 0).toFixed(2));
+//               }
+
+//               jQuery('#passing_touch_downs_user').val(data.PassingTouchdowns)
+//                   if(jQuery('#passing_touch_downs_user').val() !=''){
+//                  var qty = parseInt(jQuery('#passing_touch_downs_user').val());
+//                      var price = parseFloat(jQuery('#passing_yards').val());
+//                      jQuery('#total1').val((qty / price ? qty / price : 0).toFixed(2));
+//                   }
+//               jQuery('#interceptions_user').val(data.PassingInterceptions)
+//                   if(jQuery('#interceptions_user').val() !=''){
+//                  var qty = parseInt(jQuery('#interceptions_user').val());
+//                      var price = parseFloat(jQuery('#passing_yards').val());
+//                      jQuery('#total2').val((qty / price ? qty / price : 0).toFixed(2));
+//                   }
+//               jQuery('#rushing_yards_user').val(data.RushingYards)
+//                   if(jQuery('#rushing_yards_user').val() !=''){
+//                  var qty = parseInt(jQuery('#rushing_yards_user').val());
+//                      var price = parseFloat(jQuery('#passing_yards').val());
+//                      jQuery('#total3').val((qty / price ? qty / price : 0).toFixed(2));
+//                   }
+//               jQuery('#rushing_touchdowns_user').val(data.RushingTouchdowns)
+//                   if(jQuery('#rushing_touchdowns_user').val() !=''){
+//                  var qty = parseInt(jQuery('#rushing_touchdowns_user').val());
+//                      var price = parseFloat(jQuery('#passing_yards').val());
+//                      jQuery('#total4').val((qty / price ? qty / price : 0).toFixed(2));
+//                   }
+//               jQuery('#receptions_user').val(data.ReceivingTargets)
+//                   if(jQuery('#receptions_user').val() !=''){
+//                  var qty = parseInt(jQuery('#receptions_user').val());
+//                      var price = parseFloat(jQuery('#passing_yards').val());
+//                      jQuery('#total5').val((qty / price ? qty / price : 0).toFixed(2));
+//                   }
+//               jQuery('#reception_yards_user').val(data.Receptions)
+//                   if(jQuery('#reception_yards_user').val() !=''){
+//                  var qty = parseInt(jQuery('#reception_yards_user').val());
+//                      var price = parseFloat(jQuery('#passing_yards').val());
+//                      jQuery('#total6').val((qty / price ? qty / price : 0).toFixed(2));
+//                   }
+//               jQuery('#reception_touchdowns_user').val(data.ReceivingYards)
+//                   if(jQuery('#reception_touchdowns_user').val() !=''){
+//                  var qty = parseInt(jQuery('#reception_touchdowns_user').val());
+//                      var price = parseFloat(jQuery('#passing_yards').val());
+//                      jQuery('#total7').val((qty / price ? qty / price : 0).toFixed(2));
+//                   }
+//               jQuery('#return_touchdowns_user').val(data.ReceivingTouchdowns)
+//                   if(jQuery('#return_touchdowns_user').val() !=''){
+//                  var qty = parseInt(jQuery('#return_touchdowns_user').val());
+//                      var price = parseFloat(jQuery('#passing_yards').val());
+//                      jQuery('#total8').val((qty / price ? qty / price : 0).toFixed(2));
+//                   }
+//               jQuery('#fumbles_lost_user').val(data.FumblesLost)
+//                   if(jQuery('#fumbles_lost_user').val() !=''){
+//                  var qty = parseInt(jQuery('#fumbles_lost_user').val());
+//                      var price = parseFloat(jQuery('#passing_yards').val());
+//                      jQuery('#total9').val((qty / price ? qty / price : 0).toFixed(2));
+//                   }
+//               // total = jQuery('#total').val((passing_yards * price).toFixed(2));
+//               // jQuery('#total').append(total)
+//               // console.log(data.PassingYards)
+//               // jQuery('#total').val((qty * price).toFixed(2));
+//             }
+//         });
+//         // var qty = parseInt(jQuery('#passing_yard_user').val());
+//         // var price = parseFloat(jQuery('#passing_yards').val());
+//         // jQuery('#total').val((qty / price ? qty / price : 0).toFixed(2));
+//     });
+    
+    // jQuery('#passing_touch_down_user').on('input',function() {
+    //     var qty = $('#scoring').find('td#passing_touch_downs_1').text()
+    //     var price = parseFloat(jQuery('#passing_touch_down_user').val());
+    //     jQuery('#passing_touch_downs').val((qty / price ? qty / price : 0).toFixed(2));
+    // });
+    // jQuery('#interception_user').on('input',function() {
+    //     var qty = $('#scoring').find('td#interception_1').text()
+    //     var price = parseFloat(jQuery('#interception_user').val());
+    //     jQuery('#passing_interception').val((qty * price ? qty * price : 0).toFixed(2));
+    // });
+    // jQuery('#rushing_yards_user, #rushing_yards').on('input',function() {
+    //     var qty = parseInt(jQuery('#rushing_yards_user').val());
+    //     var price = parseFloat(jQuery('#rushing_yards').val());
+    //     jQuery('#total3').val((qty / price ? qty / price : 0).toFixed(2));
+    // });
+    // jQuery('#rushing_touchdowns_user, #rushing_touchdowns').on('input',function() {
+    //     var qty = parseInt(jQuery('#rushing_touchdowns_user').val());
+    //     var price = parseFloat(jQuery('#rushing_touchdowns').val());
+    //     jQuery('#total4').val((qty * price ? qty * price : 0).toFixed(2));
+    // });
+    // jQuery('#receptions_user, #receptions').on('input',function() {
+    //     var qty = parseInt(jQuery('#receptions_user').val());
+    //     var price = parseFloat(jQuery('#receptions').val());
+    //     jQuery('#total5').val((qty * price ? qty * price : 0).toFixed(2));
+    // });
+    // jQuery('#reception_yards_user, #reception_yards').on('input',function() {
+    //     var qty = parseInt(jQuery('#reception_yards_user').val());
+    //     var price = parseFloat(jQuery('#reception_yards').val());
+    //     jQuery('#total6').val((qty / price ? qty / price : 0).toFixed(2));
+    // });
+    // jQuery('#reception_touchdowns_user, #reception_touchdowns').on('input',function() {
+    //     var qty = parseInt(jQuery('#reception_touchdowns_user').val());
+    //     var price = parseFloat(jQuery('#reception_touchdowns').val());
+    //     jQuery('#total7').val((qty * price ? qty / price : 0).toFixed(2));
+    // });
+    // jQuery('#return_touchdowns_user, #return_touchdowns').on('input',function() {
+    //     var qty = parseInt(jQuery('#return_touchdowns_user').val());
+    //     var price = parseFloat(jQuery('#return_touchdowns').val());
+    //     jQuery('#total8').val((qty * price ? qty / price : 0).toFixed(2));
+    // });
+    // jQuery('#fumbles_lost_user, #fumbles_lost').on('input',function() {
+    //     var qty = parseInt(jQuery('#fumbles_lost_user').val());
+    //     var price = parseFloat(jQuery('#fumbles_lost').val());
+    //     jQuery('#total9').val((qty * price ? qty / price : 0).toFixed(2));
+    // });
+    // function send_player_id()
+    // {
+    //     checked = jQuery('input[name=player]:checked').val()
+    //     jQuery.ajax({
+    //     type: "GET",
+    //     data: {player_id: checked},
+    //     url: '/products/show',
+    //         success: function(data) {
+    //          for(var i=0;i<data.length;i++)
+    //          {
+    //                 jQuery('#players').append('<input onclick="send_player_id()" type="radio" name="player" class="player_name" value="'+data[i].id+'">'+' '+data[i].name+' '+data[i].team+' '+data[i].position+'</br>')
+    //          }
+    //         }
+    //     });
+    // }
+
+
+</script>
+<style>
+  .change_width{width:50px;}
+  body{overflow: scroll;}
+  .save_team{
+    margin-left: 800px;
+  }
+</style>
+</div>
+</body>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+  
+<style>
+  .sing_form{float:right;
+  padding-right: 105px;
+  padding-top: 19px;}
+        .width35
+        {
+
+            width: 45px !important;
+        }
+</style>

@@ -1,0 +1,35 @@
+<div class="form-box" id="login-box">
+  <div class="header">Sign Up</div>
+  <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% end %>
+  <%= form_for @user do |f| %>
+      <div class="body bg-gray">
+        <div class="form-group">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name,:class=>"form-control",:placeholder=>"First Name" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name,:class=>"form-control",:placeholder=>"Last Name" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.text_field :email,:class=>"form-control",:placeholder=>"Email Address" %>
+        </div>
+        <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password,:class=>"form-control",:placeholder=>"Password" %>
+      </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation,:class=>"form-control",:placeholder=>"Password Confirmation" %>
+        </div>
+      </div>
+      <div class="footer">
+        <%= f.submit "Sign up",:id=>'submit',:class=>'btn bg-olive btn-block' %>
+        <!--<button type="submit" class="btn bg-olive btn-block">Sign me in</button>-->
+        <a href="/" class="text-center">I already have an account Sign In</a>
+      </div>
+  <% end %>
+</div>
